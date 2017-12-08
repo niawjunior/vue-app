@@ -33,11 +33,11 @@
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <a class="button is-primary is-outlined" href="#">
+                  <a class="button is-primary is-outlined" href="https://github.com/niawjunior/vue-app-101">
                     <span class="icon">
-                      <i class="fa fa-download"></i>
+                      <i class="fa fa-github"></i>
                     </span>
-                    <span>Join Now</span>
+                    <span>github</span>
                   </a>
                 </p>
               </div>

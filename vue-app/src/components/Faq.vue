@@ -1,31 +1,59 @@
 <template>
   <div class="faq">
-    <h1>FAQ</h1>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="container">
+      <section class="section">
+        <h1 class="title">FAQ</h1>
+        <h2 class="subtitle is-4">Lorum ipsum and all  of that jazz.</h2>
+
+        <div class="columns" v-if="faqs && faqs.length">
+          <div class="column is-one-third" v-for="faq of faqs">
+            <div class="card">
+              <div class="card-content">
+                <p class="title">{{ faq.title}}</p>
+                <p class="answer">{{ faq.body}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  name: 'faq'
+  name: 'faq',
+  data: () => ({
+    faqs: [],
+    errors: []
+  }),
+
+  created() {
+    axios.get('http://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        this.faqs = response.data.slice(0,10);
+        console.log(response);
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
   @import '../mq'
+
+  .pd 
+    padding: 2.5em 0 1.5em 0
+
+  .answer
+    margin-top: 10px !important
+    color: gray
+
+  .columns
+    flex-wrap: wrap
+
 </style>
