@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://niawjunior.github.io/vue-app-101",
+  "homepage": "https://niawjunior.github.io/vue-app",
   "dependencies": {
     "axios": "^0.17.1",
     "bulma": "^0.6.1",
