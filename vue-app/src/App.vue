@@ -1,26 +1,78 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+      <nav class="navbar is-black">
+
+        <div class="navbar-brand">
+          <a class="navbar-item" href="http://bulma.io">
+            <span>MyCompany</span>
+          </a>
+            <div class="navbar-burger burger" v-on:click="toggleNav" v-bind:class="{ 'is-active': isActive }">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
+
+          <div class="navbar-end navbar-menu" v-on:click="toggleNav" v-bind:class="{ 'is-active': isActive }">
+            <div class="navbar-item">
+              <router-link class="navbar-item r-item" to="/">Home</router-link>
+            </div>
+             <hr class="navbar-divider">
+            <div class="navbar-item">
+              <router-link class="navbar-item r-item" to="faq">Features</router-link>
+            </div>
+             <hr class="navbar-divider">
+            <div class="navbar-item">
+              <router-link class="navbar-item r-item" to="faq">About</router-link>
+            </div>
+             <hr class="navbar-divider">
+            <div class="navbar-item">
+              <router-link class="navbar-item r-item" to="faq">FAQ</router-link>
+            </div>
+             <hr class="navbar-divider">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <a class="button is-primary is-outlined" href="#">
+                    <span class="icon">
+                      <i class="fa fa-download"></i>
+                    </span>
+                    <span>Join Now</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+      </nav>
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
+  export default {
+    name: 'app',
+    data: function() {
+      return {
+        isActive: false
+    }
+  },
+  methods: {
+    toggleNav: function() {
+      this.isActive = !this.isActive;
+    }
+  }
 }
 </script>
 
 <style lang="sass">
+  @import '../node_modules/bulma/bulma.sass'
 
-@import '../node_modules/bulma/bulma.sass'
-
-#app 
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: center
-  color: #2c3e50
-  margin-top: 60px
-
+  a.r-item 
+    color: #C1C1C1
+    padding: 0.5rem 1.75rem
+    +mobile
+      color: gray
+      &:hover
+      background-color: #F1F1F1
 </style>
